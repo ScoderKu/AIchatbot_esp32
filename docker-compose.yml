@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  faster-whisper:
+    image: fedirz/faster-whisper-server:latest
+    container_name: xiaozhi-asr-whisper
+    ports:
+      - "10095:10095"
+    volumes:
+      - ./whisper_models:/root/.cache/huggingface
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: --model small --device cuda --port 10095
+    restart: unless-stopped

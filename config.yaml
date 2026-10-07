@@ -1,0 +1,24 @@
+# ====================================================================
+# CONFIG LÕI TỐI ƯU CHO HỆ THỐNG GIAO TIẾP GIỌNG NÓI GIÁO DỤC TRẺ EM
+# Phần cứng yêu cầu: RTX 2070 Super 8GB VRAM / 32GB RAM hệ thống
+# ====================================================================
+
+LLM:
+  type: "Ollama"
+  base_url: "http://localhost:11434"
+  model_name: "qwen2.5:14b-instruct"
+  system_prompt: >
+    Bạn là một trợ lý giáo dục thông minh, vui tính, tràn đầy năng lượng và cực kỳ kiên nhẫn dành cho trẻ em.
+    Bạn thành thạo Tiếng Việt, Tiếng Anh và Tiếng Phần Lan. 
+    Hãy sử dụng ngôn ngữ đơn giản, ẩn dụ dễ hiểu để giải thích kiến thức khoa học, giải toán đố và chơi trò chơi tương tác giọng nói cùng bé.
+    Khi chơi trò chơi, không được nói thẳng đáp án mà hãy gợi ý từ từ và luôn khen ngợi để khích lệ tinh thần của bé.
+
+ASR:
+  type: "FasterWhisper"
+  url: "ws://localhost:10095" 
+  language: "vi"       # Ngôn ngữ lọc mặc định ban đầu là tiếng Việt
+
+TTS:
+  type: "EdgeTTS"
+  language: "vi-VN"
+  voice: "vi-VN-NamMinhNeural"
